@@ -1,9 +1,4 @@
-import { Application, BitmapText, Container } from "pixi.js";
-
-function delay(ms: number)
-{
-  return new Promise(resolve => setTimeout(resolve, ms));
-}
+import { Application, BitmapText } from "pixi.js";
 
 (async () =>
 {
@@ -15,9 +10,6 @@ function delay(ms: number)
 
   // Append the application canvas to the document body
   document.getElementById("pixi-container")!.appendChild(app.canvas);
-
-  const textContainer = new Container();
-  textContainer.label = "textContainer";
 
   const text1 = new BitmapText({
     text: "text1",
@@ -36,9 +28,14 @@ function delay(ms: number)
   text2.label = "text2";
   text2.y = 100;
 
-  textContainer.addChild(text1);
-  textContainer.addChild(text2);
-  app.stage.addChild(textContainer);
+  app.stage.addChild(text1);
+  app.stage.addChild(text2);
+
+  const delay = async () =>
+  {
+    const duration = 1000; //ms
+    return new Promise(resolve => setTimeout(resolve, duration));
+  }
 
   const setText = (text: string) =>
   {
@@ -46,17 +43,17 @@ function delay(ms: number)
     text2.text = text;
   }
 
-  await delay(100);
-  textContainer.visible = false;
+  await delay();
+  text1.visible = false;
 
-  await delay(100);
+  await delay();
   setText("first set text");
 
-  await delay(100);
+  await delay();
   setText("second set text");
 
-  await delay(100);
-  textContainer.visible = true;
+  await delay();
+  text1.visible = true;
 
 })();
 
