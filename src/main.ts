@@ -22,7 +22,6 @@ function delay(ms: number)
   const text1 = new BitmapText({
     text: "text1",
     style: {
-      fontFamily: "Fnt gold",
       fontSize: 100
     }
   });
@@ -31,7 +30,6 @@ function delay(ms: number)
   const text2 = new BitmapText({
     text: "text2",
     style: {
-      fontFamily: "Fnt gold",
       fontSize: 100
     }
   });
