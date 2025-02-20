@@ -16,29 +16,31 @@ function delay(ms: number)
   // Append the application canvas to the document body
   document.getElementById("pixi-container")!.appendChild(app.canvas);
 
-  const container = new Container();
+  const textContainer = new Container();
+  textContainer.label = "textContainer";
 
   const text1 = new BitmapText({
-    text: "init",
+    text: "text1",
     style: {
       fontFamily: "Fnt gold",
       fontSize: 100
     }
   });
+  text1.label = "text1";
 
   const text2 = new BitmapText({
-    text: "init",
+    text: "text2",
     style: {
       fontFamily: "Fnt gold",
       fontSize: 100
     }
   });
-
+  text2.label = "text2";
   text2.y = 100;
 
-  container.addChild(text1);
-  container.addChild(text2);
-  app.stage.addChild(container);
+  textContainer.addChild(text1);
+  textContainer.addChild(text2);
+  app.stage.addChild(textContainer);
 
   const setText = (text: string) =>
   {
@@ -47,16 +49,16 @@ function delay(ms: number)
   }
 
   await delay(100);
-  container.visible = false;
+  textContainer.visible = false;
 
   await delay(100);
-  setText("1");
+  setText("first set text");
 
   await delay(100);
-  setText("2");
+  setText("second set text");
 
   await delay(100);
-  container.visible = true;
+  textContainer.visible = true;
 
 })();
 
